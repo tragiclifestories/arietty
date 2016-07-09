@@ -1,9 +1,10 @@
 {
   "name": "arietty",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utility for creating multi-arity functions",
   "main": "dist/arietty.js",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "mkdir -p dist && cat lib/arietty.js | node node_modules/.bin/babel --presets 'es2015' --plugins 'transform-es2015-modules-umd' > dist/arietty.js",
     "test": "node node_modules/.bin/mocha --compilers js:babel-register -r test/helper.js test/arietty.test.js"
   },
