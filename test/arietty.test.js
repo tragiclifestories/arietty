@@ -1,39 +1,69 @@
 import make from '../lib/arietty';
 
 describe('arietty', function () {
-  it('wraps a function', function () {
-    let called = false;
+  describe('successful dispatch', function() {
+    it('wraps a function', function () {
+      let called = false;
 
-    let testFn = function() {
-      called = true;
-    };
+      let testFn = function() {
+        called = true;
+      };
 
-    let fn = make(testFn);
+      let fn = make(testFn);
 
-    fn();
+      fn();
 
-    expect(called).to.equal(true);
+      expect(called).to.equal(true);
+    });
+
+    it('wraps several functions and dispatches on arity', function () {
+      let called = '';
+
+      let testFn1 = function() {
+        called = '0ary';
+      };
+
+      let testFn2 = function(foo) {
+        called = '1ary';
+      };
+
+      let fn = make(testFn1, testFn2);
+
+      fn();
+
+      expect(called).to.equal('0ary');
+
+      fn('argument');
+
+      expect(called).to.equal('1ary');
+    });
   });
+  describe('options', function () {
+    it('accepts a name option', function () {
+      let testFn = function() {};
 
-  it('wraps several functions and dispatches on arity', function () {
-    let called = '';
+      let fn = make(testFn, {
+        name: 'foo'
+      });
 
-    let testFn1 = function() {
-      called = '0ary';
-    };
+      expect(fn.name).to.equal('foo');
+    });
 
-    let testFn2 = function(foo) {
-      called = '1ary';
-    };
+    it('accepts a context option', function () {
+      let called = "";
+      let testFn = function() {
+         called = this.value;
+      };
 
-    let fn = make(testFn1, testFn2);
+      let fn = make(testFn, {
+        context: {
+          value: 'foo'
+        }
+      });
 
-    fn();
+      fn();
 
-    expect(called).to.equal('0ary');
-
-    fn('argument');
-
-    expect(called).to.equal('1ary');
+      expect(called).to.equal('foo');
+    });
   });
 });
