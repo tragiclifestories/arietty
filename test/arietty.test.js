@@ -52,7 +52,7 @@ describe('arietty', function () {
     it('accepts a context option', function () {
       let called = "";
       let testFn = function() {
-         called = this.value;
+        called = this.value;
       };
 
       let fn = make(testFn, {
@@ -83,5 +83,22 @@ describe('arietty', function () {
         expect(e.message).to.equal('Function foo/1 is not defined');
       }
     });
+    it('includes function name and arity in stack trace', function () {
+      let testFn = function() {
+        throw new Error();
+      };
+
+      let fn = make(testFn, {
+        name: 'foo'
+      });
+
+      try {
+        fn();
+        expect.fail();
+      } catch (e) {
+        expect(e.stack).to.match(/foo\/0/);
+      }
+    });
   });
+
 });
