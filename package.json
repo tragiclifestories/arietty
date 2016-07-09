@@ -1,0 +1,20 @@
+{
+  "name": "arietty",
+  "version": "0.0.1",
+  "description": "Utility for creating multi-arity functions",
+  "main": "dist/arietty.js",
+  "scripts": {
+    "test": "node node_modules/.bin/mocha --compilers js:babel-register -r test/helper.js test/arietty.test.js"
+  },
+  "author": "tragiclifestories",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-plugin-transform-es2015-modules-umd": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "testdouble": "^1.4.3"
+  }
+}
