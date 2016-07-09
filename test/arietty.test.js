@@ -66,4 +66,22 @@ describe('arietty', function () {
       expect(called).to.equal('foo');
     });
   });
+
+  describe('errors', function () {
+    it('errors out if nonexistent arity is called', function function_name() {
+      let testFn = function() {
+      };
+
+      let fn = make(testFn, {
+        name: 'foo'
+      });
+
+      try {
+        fn('unwanted');
+        expect.fail();
+      } catch (e) {
+        expect(e.message).to.equal('Function foo/1 is not defined');
+      }
+    });
+  });
 });
