@@ -1,6 +1,6 @@
 {
   "name": "arietty",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Utility for creating multi-arity functions",
   "main": "dist/arietty.js",
   "scripts": {
