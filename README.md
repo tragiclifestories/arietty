@@ -31,7 +31,7 @@ Arietty is a tiny tiny library that creates functions with multiple fixed aritie
 
 ## Usage
 
-```
+```js
 import make from 'arietty';
 // or,
 // var make = require('arietty').make;
