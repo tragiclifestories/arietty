@@ -1,6 +1,9 @@
 {
   "name": "arietty",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "repository": {
+      "url": "git+https://github.com/tragiclifestories/arietty.git"
+  },
   "description": "Utility for creating multi-arity functions",
   "main": "dist/arietty.js",
   "scripts": {
